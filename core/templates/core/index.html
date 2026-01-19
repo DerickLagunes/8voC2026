@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Página de inicio{% endblock %}
+
+{% block contenido %}
+<h1>Esta es la página de incio</h1>
+<p>Este es un mensaje dentro de la columna de 10</p>
+<div id="contenidoD">
+
+</div>
+{% endblock %}
+
+{% block saludos %}
+<p>Este es un mensaje dentro de la columna de 2</p>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/onePage.js' %}"></script>
+{% endblock %}
