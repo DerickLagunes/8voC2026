@@ -7,3 +7,6 @@ def index(request):
 
 def derick(request):
     return render(request, 'core/derick.html')
+
+def isael(request):
+    return render(request, 'core/isael.html')

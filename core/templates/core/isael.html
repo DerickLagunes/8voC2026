@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Isael</title>
+    <link rel="icon" href="{% static 'img/logo-square.png' %}">
+
+    <!-- Bootstrap 5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        .hero-section {
+            background: linear-gradient(130deg, rgba(33, 37, 41, 1) 0%, rgba(0, 0, 0, 1) 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="white" stroke-width="1" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.1;
+        }
+        .profile-img {
+            max-width: 400px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: translateY(-10px);
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .animate-delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .animate-delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .animate-delay-3 { animation-delay: 0.6s; opacity: 0; }
+        .animate-delay-4 { animation-delay: 0.8s; opacity: 0; }
+        .hover-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important;
+        }
+        .hover-nav {
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .hover-nav:hover {
+            color: #fff !important;
+            border-bottom: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <!-- Este Nav es para navegar en las secciones de la pagina -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+            <div class="container">
+                <button class="navbar-toggler border-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white fw-semibold" aria-current="page" href="#sobre-mi">Sobre Mí</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 fw-semibold hover-nav" href="#habilidades">Habilidades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 fw-semibold hover-nav" href="#proyectos">Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 fw-semibold hover-nav" href="#contacto">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Foto y nombre, carrera -->
+            <section id="sobre-mi" class="hero-section d-flex align-items-center">
+                <div class="container position-relative pt-5 mt-4 pt-lg-0 mt-lg-0">
+                    <div class="row align-items-center g-5">
+                        <!-- Foto de Perfil -->
+                        <div class="col-lg-6 text-center order-1 order-lg-2">
+                            <div class="animate-fade-in animate-delay-1">
+                                <img src="{% static 'img/isael.png' %}" alt="Isael Alejandro Reyes Vargas" class="profile-img img-fluid">
+                            </div>
+                        </div>
+                        
+                        <!-- Información Personal -->
+                        <div class="col-lg-6 text-white order-2 order-lg-1">
+                            <h1 class="display-3 fw-bold mb-3 animate-fade-in">Isael Alejandro Reyes Vargas</h1>
+                            <h2 class="h4 mb-2 opacity-75 animate-fade-in animate-delay-1">Ingeniería en Desarrollo y Gestión de Software</h2>
+                            <h3 class="h5 mb-4 opacity-50 animate-fade-in animate-delay-1">8vo C</h3>
+                            
+                            <div class="mb-4">
+                                <div class="d-flex align-items-center mb-3 animate-fade-in animate-delay-2">
+                                    <i class="bi bi-mortarboard-fill fs-4 me-3"></i>
+                                    <span class="fs-5">Desarrollador Full-Stack</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-4 animate-fade-in animate-delay-2">
+                                    <i class="bi bi-briefcase-fill fs-4 me-3"></i>
+                                    <span class="fs-5">4 años de experiencia</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white bg-opacity-10 backdrop-blur p-4 rounded-3 mb-4 animate-fade-in animate-delay-3">
+                                <p class="fs-5 mb-0">
+                                    <i class="bi bi-quote"></i>
+                                    Transformo ideas en soluciones digitales innovadoras. Mi pasión por la tecnología y mi experiencia práctica me permiten crear software que no solo funciona, sino que marca la diferencia.
+                                </p>
+                            </div>
+                            
+                            <div class="animate-fade-in animate-delay-4 mb-4">
+                                <a href="#contacto" class="btn btn-light btn-lg px-5 py-3 rounded-pill shadow-lg">
+                                    <i class="bi bi-envelope-fill me-2"></i>Contáctame
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Stacks -->
+            <section id="habilidades" class="py-5 bg-light">
+                <div class="container">
+                    <h2 class="display-5 fw-bold text-center mb-5">Tecnologías y Lenguajes</h2>
+                    <div class="row g-3 justify-content-center">
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-cup-hot-fill fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">Java</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-filetype-py fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">Python</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-code-slash fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">C++</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-filetype-js fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">JavaScript</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-filetype-html fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">HTML</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-filetype-css fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">CSS</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-android2 fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">Kotlin</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-google fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">Go</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-gear-fill fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">Rust</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow-sm text-center p-4 hover-card">
+                                <i class="bi bi-filetype-php fs-1 text-secondary mb-2"></i>
+                                <h5 class="mb-0">PHP</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Proyectos -->
+            <section id="proyectos" class="py-5">
+                <div class="container">
+                    <h2 class="display-5 fw-bold text-center mb-5">Proyectos y Colaboraciones</h2>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow text-center p-4 hover-card">
+                                <i class="bi bi-ubuntu fs-1 text-secondary mb-3"></i>
+                                <h5>Linux</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow text-center p-4 hover-card">
+                                <i class="bi bi-google fs-1 text-secondary mb-3"></i>
+                                <h5>Google</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow text-center p-4 hover-card">
+                                <i class="bi bi-robot fs-1 text-secondary mb-3"></i>
+                                <h5>OpenAI</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow text-center p-4 hover-card">
+                                <i class="bi bi-rocket-takeoff-fill fs-1 text-secondary mb-3"></i>
+                                <h5>SpaceX</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow text-center p-4 hover-card">
+                                <i class="bi bi-meta fs-1 text-secondary mb-3"></i>
+                                <h5>Meta</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow text-center p-4 hover-card">
+                                <i class="bi bi-currency-bitcoin fs-1 text-secondary mb-3"></i>
+                                <h5>Bitcoin</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow text-center p-4 hover-card">
+                                <i class="bi bi-radioactive fs-1 text-secondary mb-3"></i>
+                                <h5>CERN</h5>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="card h-100 border-0 shadow text-center p-4 hover-card">
+                                <i class="bi bi-nvidia fs-1 text-secondary mb-3"></i>
+                                <h5>NVIDIA</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+            <!-- Contacto -->
+        <footer id="contacto" class="py-5 bg-dark text-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="display-5 fw-bold mb-4">Contacto</h2>
+                        <p class="lead mb-4">¿Interesado en trabajar juntos? Contáctame</p>
+                        
+                        <div class="d-flex flex-column align-items-center gap-3 mb-5">
+                            <a href="mailto:20233tn160@utez.edu.mx" class="btn btn-outline-light btn-lg d-flex align-items-center gap-2">
+                                <i class="bi bi-envelope-fill fs-4"></i>
+                                <span>20233tn160@utez.edu.mx</span>
+                            </a>
+                        </div>
+                        
+                        <div class="d-flex justify-content-center gap-3 mb-4">
+                            <a href="https://www.linkedin.com/in/isael-alejandro-reyes-vargas-41b922394/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light rounded-circle" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-linkedin fs-4"></i>
+                            </a>
+                            <a href="https://github.com/AlexReyes03" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light rounded-circle" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <i class="bi bi-github fs-4"></i>
+                            </a>
+                        </div>
+                        
+                        <hr class="my-4 bg-white opacity-25">
+                        <p class="text-muted mb-0">&copy; 2026 Isael Alejandro Reyes Vargas. Todos los derechos reservados.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap 5.3.8 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Cerrar Menu colapsable y navegar en la página -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const navbarCollapse = document.getElementById('navbarNav');
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+            
+            navLinks.forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth < 992) {
+                        bsCollapse.hide();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
