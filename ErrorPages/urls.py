@@ -7,4 +7,5 @@ urlpatterns = [
     #Paths con 3 parametros: endpoint, controller, nombre
     path('', core.index, name='index'),
     path('derick/', core.derick, name='derick')
+    path('pilar/', core.pilar, name='pilar'),
 ]

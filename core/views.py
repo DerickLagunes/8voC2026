@@ -7,3 +7,6 @@ def index(request):
 
 def derick(request):
     return render(request, 'core/derick.html')
+
+def pilar(request):
+    return render(request, 'core/pilar.html')
