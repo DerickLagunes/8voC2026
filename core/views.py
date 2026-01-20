@@ -7,3 +7,7 @@ def index(request):
 
 def derick(request):
     return render(request, 'core/derick.html')
+
+# daniela view
+def daniela(request):
+    return render(request, 'core/daniela.html')
