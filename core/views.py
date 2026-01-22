@@ -7,3 +7,6 @@ def index(request):
 
 def derick(request):
     return render(request, 'core/derick.html')
+
+def jafet(request):
+    return render(request, 'core/jafet.html')
