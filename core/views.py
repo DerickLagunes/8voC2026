@@ -11,3 +11,7 @@ def derick(request):
 def lalo(request):
     print("alguien entro a la página de Lalo")
     return render(request, 'core/lalo.html')
+
+def adir(request):
+    print("alguien entro a la página de Adir")
+    return render(request, 'core/adir.html')
