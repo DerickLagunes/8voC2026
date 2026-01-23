@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Jassiel Paredes Dominguez</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+        }
+
+        /* Sidebar (Columna Izquierda) */
+        .sidebar {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            object-fit: cover;
+            background-color: #ddd; /* Placeholder si no hay imagen */
+            margin-bottom: 15px;
+        }
+
+        .sidebar h3 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+
+        /* Main Content (Columna Derecha) */
+        .main-content {
+            padding: 40px;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2.subtitle {
+            color: var(--accent-color);
+            margin-top: 5px;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        .section-title {
+            color: var(--secondary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--primary-color);
+        }
+
+        .company-date {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background-color: var(--bg-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                text-align: center;
+            }
+            .sidebar h3 {
+                border-bottom: none;
+                text-decoration: underline;
+                text-decoration-color: var(--accent-color);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile-section">
+                <div class="profile-img" style="background-image: url('tu-foto.jpg'); background-size: cover;"></div>
+            </div>
+
+            <h3>Contacto</h3>
+            <ul class="contact-info">
+                <li>📧 jassielparedes0518@gmail.com</li>
+                <li>📱 7773872892</li>
+                <li>📍 Emiliano Zapata, Morelos</li>
+            </ul>
+
+            <h3>Habilidades</h3>
+            <ul>
+                <li>• Desarrollo Web</li>
+                <li>• Bases de Datos (SQL/NoSQL)</li>
+                <li>• Desarrollo Móvil</li>
+            </ul>
+
+            <h3>Tecnologías</h3>
+            <div class="skills-grid">
+                <span class="skill-tag" style="background: rgba(255,255,255,0.2);">Java</span>
+                <span class="skill-tag" style="background: rgba(255,255,255,0.2);">React</span>
+                <span class="skill-tag" style="background: rgba(255,255,255,0.2);">MongoDB</span>
+                <span class="skill-tag" style="background: rgba(255,255,255,0.2);">MySQL</span>
+                <span class="skill-tag" style="background: rgba(255,255,255,0.2);">GitHub</span>
+            </div>
+
+            <h3>Aptitudes</h3>
+            <ul>
+                <li>• Trabajo en equipo</li>
+                <li>• Resolución de problemas</li>
+                <li>• Responsabilidad</li>
+            </ul>
+
+            <h3>Idiomas</h3>
+            <ul>
+                <li>Español (Nativo)</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Jassiel Paredes Dominguez</h1>
+                <h2 class="subtitle">Desarrollador de Software</h2>
+            </header>
+
+            <section>
+                <h2 class="section-title">Sobre Mí</h2>
+                <p>
+                    Soy estudiante de Desarrollo de Software Multiplataforma en la Universidad Tecnológica Emiliano Zapata (UTEZ), 
+                    actualmente cursando el nivel de Técnico Superior Universitario. Me considero una persona con un fuerte deseo de superación, 
+                    siempre en busca de oportunidades para seguir creciendo profesionalmente.
+                </p>
+                <p>
+                    Mi objetivo es formar parte de un equipo de trabajo donde pueda aplicar e implementar los conocimientos y habilidades 
+                    adquiridas durante mi formación académica, contribuyendo al desarrollo de proyectos innovadores y soluciones tecnológicas eficientes.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="section-title">Experiencia Laboral</h2>
+                
+                <div class="experience-item">
+                    <div class="job-title">Líder de Proyecto - Sistema de Control de Estacionamiento</div>
+                    <div class="company-date">UTEZ | Septiembre 2025 - Diciembre 2025</div>
+                    <ul>
+                        <li>Coordinación y liderazgo del desarrollo del sistema, definiendo objetivos, alcances y tiempos.</li>
+                        <li>Participación activa en el desarrollo frontend, implementando interfaces web funcionales y responsivas.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Líder de Proyecto - Sistema de Gestión de Fraccionamiento</div>
+                    <div class="company-date">UTEZ | Enero 2025 - Abril 2025</div>
+                    <ul>
+                        <li>Desarrollo del sistema de Control y Seguimiento de Visitas para plataformas web y móvil.</li>
+                        <li>Implementación de seguridad y autenticación para garantizar el acceso solo a usuarios autorizados.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-title">Desarrollador Frontend - Sistema de Gestión de Aulas</div>
+                    <div class="company-date">UTEZ | Enero 2024 - Abril 2024</div>
+                    <ul>
+                        <li>Desarrollo de la interfaz web enfocada en la administración de espacios, horarios y disponibilidad.</li>
+                        <li>Aplicación de buenas prácticas de diseño UI/UX para facilitar el uso por parte de docentes y administrativos.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title">Formación Académica</h2>
+                
+                <div class="education-item">
+                    <div class="job-title">TSU en Desarrollo de Software</div>
+                    <div class="company-date">Universidad Tecnológica Emiliano Zapata (UTEZ) | 2023 - 2025</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="job-title">Técnico en Programación</div>
+                    <div class="company-date">CECYTE | 2020 - 2023</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
