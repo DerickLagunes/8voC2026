@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
 def index(request):
-    print("alguien entro a la página principal")
-    return render(request, 'core/index.html')
+    return render(request, 'core/lore.html')  # ← Nota el 'core/' agregado
 
-def derick(request):
-    return render(request, 'core/derick.html')
+#def carreras(request):
+   # return render(request, 'core/carreras.html')
+  # def index(request):
+   # return render(request, 'core/index.html') 

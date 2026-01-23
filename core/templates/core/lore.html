@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CV - Loreley Carrillo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2eaea;
+            color: #333;
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+
+        /* Columna izquierda */
+        .left {
+            background-color: #c9b2b2;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .left img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .left h2 {
+            margin: 10px 0 5px;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        .left p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        /* Columna derecha */
+        .right {
+            padding: 30px;
+        }
+
+        .right h1 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section h3 {
+            border-bottom: 2px solid #a57aff;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .section p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+
+    <!-- COLUMNA IZQUIERDA -->
+    <div class="left">
+        <!-- Imagen de ejemplo (solo cámbiala por la tuya en /img) -->
+        <img src="{% static 'img/lore.jpg' %}" alt="Foto de perfil">
+
+        <h2>Loreley Carrillo</h2>
+        <p><strong>Grupo:</strong> 8C-DSM</p>
+        <p><strong>Edad:</strong> 21 años</p>
+        <p><strong>Sexo:</strong> Femenino</p>
+    </div>
+
+    <!-- COLUMNA DERECHA -->
+    <div class="right">
+        <h1>Currículum Vitae</h1>
+        <p class="subtitle">Estudiante de Desarrollo de Software</p>
+
+        <div class="section">
+            <h3>Descripción</h3>
+            <p>
+                Soy una estudiante responsable y organizada, con interés en el
+                desarrollo de software y aplicaciones web. Me gusta aprender nuevas
+                tecnologías, trabajar en equipo y mejorar continuamente mis habilidades
+                técnicas y personales.
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>Información Académica</h3>
+            <p>
+                Ingeniería / Técnico en Desarrollo de Software <br>
+                Emilianio Zapata / CECYTE / CESPA
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>Habilidades</h3>
+            <p>
+                • Programación básica en Java y JavaScript <br>
+                • Desarrollo web <br>
+                • Trabajo en equipo <br>
+                • Comunicación efectiva
+            </p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
