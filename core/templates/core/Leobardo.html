@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Leobardo Daniel Bertadillo Villalobos</title>
+    <style>
+        :root {
+            --sidebar-bg: #2c3e50;
+            --sidebar-text: #ecf0f1;
+            --main-bg: #ffffff;
+            --text-color: #333;
+            --accent-color: #3498db;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .cv-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            width: 100%;
+            max-width: 1000px;
+            background: var(--main-bg);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 30px;
+            text-align: center;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--sidebar-text);
+            margin-bottom: 20px;
+            background-color: #95a5a6;
+        }
+        .sidebar h2 {
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .contact-info, .skills-list {
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        .contact-info p {
+            margin: 10px 0;
+        }
+        .tag {
+            background: rgba(255,255,255,0.1);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 2px;
+            font-size: 0.85rem;
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+        .header-name {
+            color: var(--sidebar-bg);
+            margin-top: 0;
+            font-size: 2.5rem;
+            line-height: 1.1;
+        }
+        .header-title {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+        h3 {
+            color: var(--sidebar-bg);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 30px;
+            text-transform: uppercase;
+        }
+        .job-item, .edu-item {
+            margin-bottom: 25px;
+        }
+        .job-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .job-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cv-container">
+        <aside class="sidebar">
+            <img src="https://lh3.googleusercontent.com/a/ACg8ocJkMms8A-dhHAlLZOHA_q_K_dyPT8ygwU_g54xyf06qUuQqTutL=s360-c-no" alt="Foto de Leobardo" class="profile-img">
+            
+            <h2>Contacto</h2>
+            <div class="contact-info">
+                <p>📧 leobardovillalobos10@gmail.com</p>
+                <p>📞 +52 777 167 3425</p>
+                <p>📍 Emiliano Zapata, Morelos</p>
+                <p>🔗 <a href="https://github.com/LeobardoVillalobos88" style="color:white">GitHub</a></p>
+            </div>
+
+            <h2>Habilidades</h2>
+            <div class="skills-list">
+                <span class="tag">Java</span>
+                <span class="tag">Spring Boot</span>
+                <span class="tag">React</span>
+                <span class="tag">SQL / MySQL</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">JavaScript</span>
+            </div>
+
+            <h2>Idiomas</h2>
+            <div class="skills-list">
+                <p>Español (Nativo)</p>
+                <p>Inglés (B1)</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1 class="header-name">Leobardo Daniel<br>Bertadillo Villalobos</h1>
+            <h2 class="header-title">Ingeniería en Desarrollo y Gestión de Software</h2>
+
+            <h3>Acerca de mí</h3>
+            <p>
+                Busco integrarme a proyectos tecnológicos donde pueda aplicar mis conocimientos en desarrollo de software con Java, Spring Boot y React. Me considero una persona proactiva, responsable y comprometida con el aprendizaje constante.
+            </p>
+
+            <h3>Experiencia</h3>
+            
+            <div class="job-item">
+                <div class="job-title">Sistema de Gestión de Proyectos - E.S.I.E.S.</div>
+                <span class="job-meta">Mayo 2025 - Ago 2025</span>
+                <ul>
+                    <li>Implementación de autenticación JWT y roles con Spring Security.</li>
+                    <li>Cálculo automático de parcialidades y generación de reportes gráficos.</li>
+                </ul>
+            </div>
+
+            <div class="job-item">
+                <div class="job-title">Sistema COSEVIF - UTEZ</div>
+                <span class="job-meta">Ene 2025 - Abr 2025</span>
+                <ul>
+                    <li>Plataforma web y móvil (React Native) para control de accesos con códigos QR.</li>
+                    <li>Backend desarrollado con Spring Boot y MongoDB.</li>
+                </ul>
+            </div>
+
+            <h3>Educación</h3>
+            <div class="edu-item">
+                <div class="job-title">Ingeniería en Desarrollo de Software</div>
+                <span class="job-meta">UTEZ | Sep 2025 - Actualidad</span>
+            </div>
+            <div class="edu-item">
+                <div class="job-title">TSU en Desarrollo Multiplataforma</div>
+                <span class="job-meta">UTEZ | Sep 2023 - Sep 2025</span>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
