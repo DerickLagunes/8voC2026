@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render 
 
 # Create your views here.
 def index(request):
@@ -7,3 +7,7 @@ def index(request):
 
 def derick(request):
     return render(request, 'core/derick.html')
+
+def lalo(request):
+    print("alguien entro a la página de Lalo")
+    return render(request, 'core/lalo.html')
