@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %} Info de alumnos
+{% endblock %}
+
+{% block contenido %}
+
+<form method="post">
+    {% csrf_token %}
+    <p>Envía el formulario</p>
+    {% if seEnvio %}
+        <h1>El formulario se envió</h1>
+    {% endif %}
+
+    <label for="nombre"> Nombre </label>
+    <input type="text" required name="nombre" />
+
+    <button type="submit">Enviar</button>
+    {% if nombre %}
+        <h1>Se registró exitosamente a: {{ nombre }}</h1>
+    {% endif %}
+</form>
+{% endblock %}
+
+{% block saludos %}
+{% endblock %}
