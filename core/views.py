@@ -7,3 +7,6 @@ def index(request):
 
 def katia(request):
     return render(request, 'core/katia.html')
+  
+def derick(request):
+    return render(request, 'core/derick.html')
