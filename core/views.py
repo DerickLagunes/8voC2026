@@ -5,5 +5,8 @@ def index(request):
     print("alguien entro a la página principal")
     return render(request, 'core/index.html')
 
+def katia(request):
+    return render(request, 'core/katia.html')
+  
 def derick(request):
     return render(request, 'core/derick.html')

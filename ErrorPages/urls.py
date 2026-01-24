@@ -6,5 +6,6 @@ from core import views as core
 urlpatterns = [
     #Paths con 3 parametros: endpoint, controller, nombre
     path('', core.index, name='index'),
+    path('katia/', core.katia, name='katia'),
     path('derick/', core.derick, name='derick')
 ]
