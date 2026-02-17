@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block titulo %}Reporte de Errores{% endblock %}
+
+{% block contenido %}
+<div class="container mt-5">
+    <h1 class="mb-4">Sistema de Reporte de Errores</h1>
+    
+    <!-- Mensajes de respuesta -->
+    <div id="mensaje-respuesta" class="alert d-none" role="alert"></div>
+    
+    <!-- Formulario de reporte -->
+    <div class="card mb-5">
+        <div class="card-header">
+            <h3>Registrar Nuevo Reporte</h3>
+        </div>
+        <div class="card-body">
+            <form id="formReporte">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="id_titulo" class="form-label">Título</label>
+                    <input type="text" class="form-control" id="id_titulo" name="titulo" maxlength="150" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_descripcion" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="id_descripcion" name="descripcion" rows="3" required></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_tipo_error" class="form-label">Tipo de Error</label>
+                    <select class="form-select" id="id_tipo_error" name="tipo_error" required>
+                        <option value="">Seleccione un tipo...</option>
+                        <option value="400">400 - Bad Request</option>
+                        <option value="401">401 - Unauthorized</option>
+                        <option value="403">403 - Forbidden</option>
+                        <option value="404">404 - Not Found</option>
+                        <option value="500">500 - Internal Server Error</option>
+                        <option value="502">502 - Bad Gateway</option>
+                        <option value="503">503 - Service Unavailable</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_url" class="form-label">URL</label>
+                    <input type="url" class="form-control" id="id_url" name="url" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_metodo_http" class="form-label">Método HTTP</label>
+                    <select class="form-select" id="id_metodo_http" name="metodo_http" required>
+                        <option value="">Seleccione un método...</option>
+                        <option value="GET">GET</option>
+                        <option value="POST">POST</option>
+                        <option value="PUT">PUT</option>
+                        <option value="DELETE">DELETE</option>
+                        <option value="PATCH">PATCH</option>
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_ip_cliente" class="form-label">IP Cliente (Opcional)</label>
+                    <input type="text" class="form-control" id="id_ip_cliente" name="ip_cliente">
+                </div>
+                
+                <button type="button" class="btn btn-primary" onclick="enviarFormulario()">Enviar Reporte</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Lista de reportes -->
+    <div class="card">
+        <div class="card-header">
+            <h3>Reportes Registrados</h3>
+        </div>
+        <div class="card-body">
+            <div id="listaReportes" class="row">
+                <!-- Los reportes se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Cargar reportes al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+        cargarReportes();
+    });
+    
+    // Función para cargar reportes desde el backend
+    function cargarReportes() {
+        fetch('/obtener-reportes/')
+            .then(response => response.json())
+            .then(data => {
+                const listaReportes = document.getElementById('listaReportes');
+                listaReportes.innerHTML = '';
+                
+                if (data.length === 0) {
+                    listaReportes.innerHTML = '<p class="text-muted">No hay reportes registrados.</p>';
+                    return;
+                }
+                
+                data.forEach(reporte => {
+                    const card = crearCardReporte(reporte);
+                    listaReportes.appendChild(card);
+                });
+            })
+            .catch(error => {
+                console.error('Error al cargar reportes:', error);
+            });
+    }
+    
+    // Función para crear una tarjeta de reporte
+    function crearCardReporte(reporte) {
+        const col = document.createElement('div');
+        col.className = 'col-md-6 col-lg-4 mb-3';
+        
+        // Determinar color según tipo de error
+        let bgColor = '';
+        const tipoError = reporte.tipo_error.toString();
+        if (tipoError.startsWith('4')) {
+            bgColor = 'bg-warning'; // Amarillo para familia 400
+        } else if (tipoError.startsWith('5')) {
+            bgColor = 'bg-danger text-white'; // Rojo para familia 500
+        }
+        
+        col.innerHTML = `
+            <div class="card ${bgColor} h-100">
+                <div class="card-body">
+                    <h5 class="card-title">${reporte.titulo}</h5>
+                    <p class="card-text"><strong>Tipo:</strong> ${reporte.tipo_error}</p>
+                    <p class="card-text"><strong>Descripción:</strong> ${reporte.descripcion}</p>
+                    <p class="card-text"><strong>URL:</strong> ${reporte.url}</p>
+                    <p class="card-text"><strong>Método:</strong> ${reporte.metodo_http}</p>
+                    ${reporte.ip_cliente ? `<p class="card-text"><strong>IP:</strong> ${reporte.ip_cliente}</p>` : ''}
+                    <p class="card-text"><small>Fecha: ${new Date(reporte.fecha_reporte).toLocaleString()}</small></p>
+                </div>
+            </div>
+        `;
+        
+        return col;
+    }
+    
+    // Función para enviar el formulario
+    function enviarFormulario() {
+        const form = document.getElementById('formReporte');
+        const formData = new FormData(form);
+        
+        fetch('/reportes-error/', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const mensajeDiv = document.getElementById('mensaje-respuesta');
+            mensajeDiv.classList.remove('d-none', 'alert-success', 'alert-danger');
+            
+            if (data.status === 'ok') {
+                mensajeDiv.classList.add('alert-success');
+                mensajeDiv.textContent = data.mensaje;
+                form.reset();
+                // Recargar la lista de reportes
+                cargarReportes();
+            } else {
+                mensajeDiv.classList.add('alert-danger');
+                let mensajeError = data.mensaje + '\n';
+                if (data.errors) {
+                    for (let campo in data.errors) {
+                        mensajeError += `${campo}: ${data.errors[campo].join(', ')}\n`;
+                    }
+                }
+                mensajeDiv.textContent = mensajeError;
+            }
+            
+            // Scroll al mensaje
+            mensajeDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                mensajeDiv.classList.add('d-none');
+            }, 5000);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            const mensajeDiv = document.getElementById('mensaje-respuesta');
+            mensajeDiv.classList.remove('d-none', 'alert-success');
+            mensajeDiv.classList.add('alert-danger');
+            mensajeDiv.textContent = 'Error al procesar la solicitud';
+        });
+    }
+</script>
+{% endblock %}

@@ -7,8 +7,8 @@ import re
 class DataForm(forms.Form):
 
     nombre = forms.CharField(
-        min_length=3,
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tu nombre', 'pattern': '[a-zA-ZáéíóúÁÉÍÓÚ\\s]{10,}', 'title': 'Solo letras y espacios, mínimo 10 caracteres'})
+        min_length=10,
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tu nombre', 'pattern': '[a-zA-ZáéíóúÁÉÍÓÚ\\s]{10,}', 'title': 'Solo letras y espacios. Mínimo 10 caracteres.'})
     )
     matricula = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tu matricula', 'pattern': '\\d{5}[A-Za-z]{2}\\d{3}', 'title': 'Formato: 5 dígitos, 2 letras, 3 dígitos (ej: 12345AB678)'})
@@ -33,10 +33,8 @@ class DataForm(forms.Form):
     #Solo letras y espacios. Sin números ni símbolos. Mínimo 10 caracteres.
     def clean_nombre(self):
         data = self.cleaned_data['nombre']
-        if not re.match(r'^[a-zA-ZáéíóúÁÉÍÓÚ\s]{10,}', data):
-            raise ValidationError("El nombre solo puede contener letras y espacios.")
-        if len(data) < 10:
-            raise ValidationError("El nombre debe tener al menos 10 caracteres.")
+        if not re.match(r'^[a-zA-ZáéíóúÁÉÍÓÚ\s]{10,}$', data):
+            raise ValidationError("El nombre solo puede contener letras y espacios, sin números ni símbolos. Mínimo 10 caracteres.")
         return data
     
     #Matrícula UTEZ (Texto)

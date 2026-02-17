@@ -2,8 +2,6 @@
 
 from django.shortcuts import render
 from alumno.alumno import alumno
-
-from django.shortcuts import render
 from .forms import ContactoForm
 
 def contacto_view(request):

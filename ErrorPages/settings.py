@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'core',
     'alumno',
     'registro',
+    'error_reports',
 ]
 
 MIDDLEWARE = [

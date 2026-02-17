@@ -18,6 +18,9 @@ def registro_view(request):
             print(f"Nombre: {nombre}\nMatrícula: {matricula}\nEmail: {email}\nTeléfono: {telefono}\nRFC: {rfc}\nContraseña: {contrasena}")
             
             return render(request, 'registro/registro.html', {'form': form, 'success': True})
+        else:
+            # Mantener los datos en el formulario cuando hay errores
+            return render(request, 'registro/registro.html', {'form': form})
     else:
         form = DataForm()
     
