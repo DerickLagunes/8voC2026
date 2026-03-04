@@ -38,15 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-<<<<<<< Updated upstream
-=======
     'alumno',
     'contacto_mysql',
     'mascota_api',
     'estudiantes_api',
     'rest_framework',
     'corsheaders',
->>>>>>> Stashed changes
 ]
 
 MIDDLEWARE = [
@@ -85,17 +82,12 @@ WSGI_APPLICATION = 'ErrorPages.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< Updated upstream
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-=======
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pruebaC',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',  
         'PORT': '3306',
->>>>>>> Stashed changes
     }
 }
 
