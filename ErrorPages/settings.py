@@ -38,10 +38,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+<<<<<<< Updated upstream
+=======
+    'alumno',
+    'contacto_mysql',
+    'mascota_api',
+    'estudiantes_api',
+    'rest_framework',
+    'corsheaders',
+>>>>>>> Stashed changes
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -75,8 +85,17 @@ WSGI_APPLICATION = 'ErrorPages.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< Updated upstream
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+=======
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pruebaC',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',  
+        'PORT': '3306',
+>>>>>>> Stashed changes
     }
 }
 
@@ -119,4 +138,13 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR/'static',
+]
+
+# Permite que estas URLs consuman tu API
+
+CORS_ALLOWED_ORIGINS = [
+
+    "http://localhost:5173", # Puerto por defecto de Vite
+    "http://127.0.0.1:5173",
+
 ]
