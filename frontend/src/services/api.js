@@ -10,22 +10,12 @@ export const read = () => {
 
 // 2. CREAR (POST)
 export const create = (data) => {
-    // Si la API acepta JSON directo (DRF lo hace por defecto sin FormData)
-    // Pero seguiremos la estructura del ejemplo con FormData
-    const formData = new FormData();
-    for (const key in data) {
-        formData.append(key, data[key]);
-    }
-    return axios.post(`${BASE_URL}/`, formData);
+    return axios.post(`${BASE_URL}/`, data);
 };
 
 // 3. ACTUALIZAR (PUT)
 export const update = (id, data) => {
-    const formData = new FormData();
-    for (const key in data) {
-        formData.append(key, data[key]);
-    }
-    return axios.put(`${BASE_URL}/${id}/`, formData);
+    return axios.put(`${BASE_URL}/${id}/`, data);
 };
 
 // 4. ELIMINAR (DELETE)
