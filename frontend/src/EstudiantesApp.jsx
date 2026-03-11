@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 import "bootstrap/dist/css/bootstrap.min.css";
 import toast, { Toaster } from "react-hot-toast";
 
-export default function EstudiantesApp() {
+export default function EstudiantesApp({ onLogout }) {
   const [estudiantes, setEstudiantes] = useState([]);
   
   // Estado inicial centralizado para limpiar fácilmente el formulario
@@ -234,6 +234,12 @@ export default function EstudiantesApp() {
     <div className="container mt-5">
       <Toaster position="top-right" reverseOrder={false} />
 
+      <div className="d-flex justify-content-between align-items-center mb-4">
+          <h2>Panel de Administración de Estudiantes</h2>
+          <button className="btn btn-outline-danger" onClick={onLogout}>
+              Cerrar Sesión
+          </button>
+      </div>
       <div className="row">
         <div className="col-md-4 mb-4">
           <div className="card shadow-sm">

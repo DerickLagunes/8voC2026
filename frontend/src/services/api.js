@@ -1,24 +1,86 @@
 import axios from 'axios';
 
-// La URL base para estudiantes
-const BASE_URL = 'http://localhost:8000/estudiantes'; 
+// ==========================================
+// 1. CONFIGURACIÓN DE LA INSTANCIA DE AXIOS
+// ==========================================
+
+const api = axios.create({
+    baseURL: 'http://localhost:8000'
+});
+
+// Interceptor de Solicitud (Agrega el token si existe)
+api.interceptors.request.use(
+    (config) => {
+        const token = localStorage.getItem('access_token');
+        if (token) {
+            config.headers['Authorization'] = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => {
+        return Promise.reject(error);
+    }
+);
+
+// Interceptor de Respuesta (Maneja el error 401 y refresca el token)
+api.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    async (error) => {
+        const originalRequest = error.config;
+
+        if (error.response && error.response.status === 401 && !originalRequest._retry) {
+            originalRequest._retry = true;
+
+            try {
+                const refreshToken = localStorage.getItem('refresh_token');
+                
+                // Usamos el axios global aquí para no disparar este mismo interceptor
+                const response = await axios.post('http://localhost:8000/api/token/refresh/', {
+                    refresh: refreshToken
+                });
+
+                localStorage.setItem('access_token', response.data.access);
+                originalRequest.headers['Authorization'] = `Bearer ${response.data.access}`;
+                
+                return api(originalRequest);
+            } catch (refreshError) {
+                // Si el refresh token también expiró, limpiamos y mandamos al login
+                localStorage.removeItem('access_token');
+                localStorage.removeItem('refresh_token');
+                window.location.href = '/'; 
+                return Promise.reject(refreshError);
+            }
+        }
+        return Promise.reject(error);
+    }
+);
+
+// ==========================================
+// 2. FUNCIONES CRUD PARA ESTUDIANTES
+// ==========================================
+
+const BASE_URL = '/estudiantes';
 
 // 1. LISTAR (GET)
 export const read = () => {
-    return axios.get(`${BASE_URL}/`);
+    return api.get(`${BASE_URL}/`);
 };
 
 // 2. CREAR (POST)
 export const create = (data) => {
-    return axios.post(`${BASE_URL}/`, data);
+    return api.post(`${BASE_URL}/`, data);
 };
 
 // 3. ACTUALIZAR (PUT)
 export const update = (id, data) => {
-    return axios.put(`${BASE_URL}/${id}/`, data);
+    return api.put(`${BASE_URL}/${id}/`, data);
 };
 
 // 4. ELIMINAR (DELETE)
 export const deleteE = (id) => {
-    return axios.delete(`${BASE_URL}/${id}/`);
+    return api.delete(`${BASE_URL}/${id}/`);
 };
+
+export default api;
